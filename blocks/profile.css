@@ -16,7 +16,7 @@
   border-radius: 8px;
 }
 
-.profile__column_profile-content {
+.profile__column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,7 +57,7 @@
   overflow: hidden;
 }
 
-.profile__button_edit-button {
+.profile__edit-button {
   padding: 0;
   border: none;
   background-color: #fcf5e5;
@@ -74,17 +74,17 @@
   letter-spacing: 0%;
 }
 
-.profile__button_edit-button:hover {
+.profile__edit-button:hover {
   opacity: 100%;
 }
 
-.profile__column_new-post {
+.profile__new-post-column {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.profile__button_new-post {
+.profile__new-post-button {
   height: 52px;
   width: 149px;
 
@@ -96,7 +96,7 @@
   border: 0;
 }
 
-.profile__button_new-post:hover {
+.profile__new-post-button:hover {
   opacity: 0.8;
 }
 .profile__plus-icon {
@@ -140,7 +140,7 @@
     padding-bottom: 32px;
   }
 
-  .profile__button_edit-button {
+  .profile__edit-button {
     justify-content: center;
     padding-bottom: 20px;
   }
@@ -151,7 +151,7 @@
     margin: 0;
   }
 
-  .profile__button_new-post {
+  .profile__new-post-button {
     max-width: 288px;
     width: 100%;
   }
