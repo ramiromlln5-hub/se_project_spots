@@ -34,4 +34,4 @@ Link to Git Pages. https://ramiromlln5-hub.github.io/se_project_spots/
 As I learn more, I would like to know how to apply all this information onto a database.
 
 **Project Pitch video**
-Link to project pitch. https://www.loom.com/share/fb129f42b8e248f1ae067765517a60c4?sid=69ba0904-a59a-4410-beae-695682d528d1
+Link to project pitch.
