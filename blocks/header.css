@@ -1,0 +1,9 @@
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.header__logo {
+  margin: 0 auto;
+}
