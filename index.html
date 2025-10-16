@@ -127,6 +127,55 @@
       <footer class="footer">
         <p class="footer__copyright">2025 &#169; Spots</p>
       </footer>
+      <div class="modal">
+        <div class="modal__container">
+          <button class="modal__button-close"></button>
+          <h2 class="modal__title">Edit profile</h2>
+          <form class="modal__form">
+            <label for="profile-description" class="modal__label">Name</label>
+            <input
+              type="text"
+              class="modal__input"
+              placeholder="Type your name"
+            />
+            <label for="profile-description" class="modal__label"
+              >Description</label
+            >
+            <input
+              type="text"
+              class="modal__input"
+              placeholder="Descibe yourself"
+            />
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal modal_is-open">
+        <div class="modal__container">
+          <button class="modal__button-close"></button>
+          <h2 class="modal__title">New Post</h2>
+          <form class="modal__form">
+            <label for="profile-description" class="modal__label"
+              >Image link</label
+            >
+            <input
+              type="url"
+              class="modal__input"
+              placeholder="Place a link to the picture"
+            />
+            <label for="profile-description" class="modal__label"
+              >Caption</label
+            >
+            <input
+              type="text"
+              class="modal__input"
+              placeholder="Type your caption"
+            />
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
