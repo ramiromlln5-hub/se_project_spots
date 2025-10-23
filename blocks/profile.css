@@ -85,6 +85,7 @@
 
 .profile__edit-button:hover {
   opacity: 100%;
+  cursor: pointer;
 }
 
 .profile__new-post-column {
@@ -107,6 +108,7 @@
 
 .profile__new-post-button:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 .profile__plus-icon {
   margin: 0;

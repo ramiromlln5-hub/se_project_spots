@@ -8,8 +8,8 @@ const newPostModal = document.querySelector("#new-post-modal");
 const newPostButton = document.querySelector(".profile__new-post-button");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostClosedButton = newPostModal.querySelector(".modal__button-close");
-let newPostUrl = newPostModal.querySelector("#new-post-url");
-let newPostCaption = newPostModal.querySelector("#new-post-caption");
+const newPostUrl = newPostModal.querySelector("#new-post-url");
+const newPostCaption = newPostModal.querySelector("#new-post-caption");
 const profileName = document.querySelector(".profile__name");
 const profileJobTitle = document.querySelector(".profile__job-title");
 const profileNameInput = editProfileModal.querySelector("#profile-name-input");
@@ -17,41 +17,49 @@ const profileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 
+function openModal(modal) {
+  modal.classList.add("modal_is-open");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-open");
+}
+
 editProfileButton.addEventListener("click", function () {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileJobTitle.textContent;
-  editProfileModal.classList.add("modal_is-open");
+  openModal(editProfileModal);
 });
 
 editProfileClosedButton.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal_is-open");
+  closeModal(editProfileModal);
 });
 
 newPostButton.addEventListener("click", function () {
-  newPostModal.classList.add("modal_is-open");
+  openModal(newPostModal);
 });
 
 newPostClosedButton.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-open");
+  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileJobTitle.textContent = profileDescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-open");
+  closeModal(editProfileModal);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-  newPostUrl = newPostUrl.value;
-  newPostCaption = newPostCaption.value;
+  const PostUrl = newPostUrl.value;
+  const PostCaption = newPostCaption.value;
 
-  console.log(newPostUrl);
-  console.log(newPostCaption);
-  newPostModal.classList.remove("modal_is-open");
+  console.log(PostUrl);
+  console.log(PostCaption);
+  closeModal(newPostModal);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
