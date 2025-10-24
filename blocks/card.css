@@ -15,12 +15,12 @@
 
 .card__title {
   margin: 0;
-  font-family: Poppins;
+  font-family: Poppins, Arial, sans-serif;
   font-weight: 500;
-  font-style: Medium;
+
   font-size: 20px;
   line-height: 120%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -45,6 +45,7 @@
 
 .card__like-button:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 635px) and (min-width: 320px) {
@@ -57,7 +58,5 @@
   .card__image {
     max-width: 288px;
     max-height: 288px;
-
-    align-content: center;
   }
 }
