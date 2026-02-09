@@ -9,7 +9,7 @@ const initialCards = [
   },
   {
     name: "Restaurant terrace",
-    link: "http://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg",
   },
   {
     name: "An outdoor cafe",
@@ -56,6 +56,10 @@ const previewModalCloseBtn = previewModal.querySelector(
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 
+previewModalCloseBtn.addEventListener("click", () => {
+  closeModal(previewModal);
+});
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
@@ -84,9 +88,6 @@ function getCardElement(data) {
     openModal(previewModal);
   });
 
-  previewModalCloseBtn.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
   return cardElement;
 }
 
@@ -127,16 +128,15 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-  const PostUrl = newPostUrl.value;
-  const PostCaption = newPostCaption.value;
+  const postUrl = newPostUrl.value;
+  const postCaption = newPostCaption.value;
   const cardElement = getCardElement({
-    name: PostCaption,
-    link: PostUrl,
+    name: postCaption,
+    link: postUrl,
   });
   cardsList.prepend(cardElement);
+  evt.target.reset();
 
-  console.log(PostUrl);
-  console.log(PostCaption);
   closeModal(newPostModal);
 }
 

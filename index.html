@@ -81,8 +81,9 @@
               type="text"
               class="modal__input"
               placeholder="Type your name"
+              required
             />
-            <label for="profile-description" class="modal__label"
+            <label for="profile-description-input" class="modal__label"
               >Description</label
             >
             <input
@@ -90,6 +91,7 @@
               type="text"
               class="modal__input"
               placeholder="Describe yourself"
+              required
             />
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
@@ -107,22 +109,22 @@
               type="url"
               class="modal__input"
               placeholder="Place a link to the picture"
+              required
             />
-            <label for="profile-description" class="modal__label"
-              >Caption</label
-            >
+            <label for="new-post-caption" class="modal__label">Caption</label>
             <input
               id="new-post-caption"
               type="text"
               class="modal__input"
               placeholder="Type your caption"
+              required
             />
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
       </div>
 
-      <div class="modal modal__type_preview" id="preview-modal">
+      <div class="modal modal_type_preview" id="preview-modal">
         <div class="modal__image-container">
           <button
             class="modal__button-close modal__button-close_preview"
