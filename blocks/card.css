@@ -49,6 +49,7 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 1px 11px;
 }
 
 .card__like-button:hover {
