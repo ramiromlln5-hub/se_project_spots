@@ -78,11 +78,11 @@
 
   font-size: 16px;
   line-height: 100%;
-  letter-spacing: 0%;
+  letter-spacing: 0;
 }
 
 .profile__edit-button:hover {
-  opacity: 100%;
+  opacity: 1;
   cursor: pointer;
 }
 
