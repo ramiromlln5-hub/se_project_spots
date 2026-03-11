@@ -38,6 +38,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 
 const disableButtonElement = (buttonElement, settings) => {
   buttonElement.disabled = true;
+  buttonElement.classList.add(settings.inactiveButtonClass);
 };
 
 const setEventListeners = (formElement) => {
@@ -56,6 +57,21 @@ const setEventListeners = (formElement) => {
     });
   });
 };
+
+function resetValidation(formElement) {
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.inputSelector),
+  );
+  const buttonElement = formElement.querySelector(
+    settings.submitButtonSelector,
+  );
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement);
+  });
+
+  toggleButtonState(inputList, buttonElement);
+}
 
 function enableValidation() {
   const formList = document.querySelectorAll(settings.formSelector);

@@ -55,10 +55,20 @@ const previewModalCloseBtn = previewModal.querySelector(
 );
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-const submitButtonEl = document.querySelectorAll(".modal__submit-button");
+const profileSubmitBtn = document.querySelector("#profile-name-submit-button");
+const newPostSubmitBtn = document.querySelector("#new-post-submit-button");
 
 previewModalCloseBtn.addEventListener("click", () => {
   closeModal(previewModal);
+});
+
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
 });
 
 function getCardElement(data) {
@@ -94,10 +104,21 @@ function getCardElement(data) {
 
 function openModal(modal) {
   modal.classList.add("modal_is-open");
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-open");
+  document.removeEventListener("keydown", handleEscapeKey);
+}
+
+function handleEscapeKey(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal_is-open");
+    if (openModal) {
+      closeModal(openModal);
+    }
+  }
 }
 
 editProfileButton.addEventListener("click", function () {
@@ -107,6 +128,7 @@ editProfileButton.addEventListener("click", function () {
 });
 
 editProfileClosedButton.addEventListener("click", function () {
+  resetValidation(editProfileForm);
   closeModal(editProfileModal);
 });
 
@@ -123,7 +145,7 @@ function handleEditProfileSubmit(evt) {
   profileName.textContent = profileNameInput.value;
   profileJobTitle.textContent = profileDescriptionInput.value;
   evt.target.reset();
-  disableButtonElement(submitButtonEl, settings);
+  disableButtonElement(profileSubmitBtn, settings);
   closeModal(editProfileModal);
 }
 
@@ -139,7 +161,7 @@ function handleNewPostSubmit(evt) {
   });
   cardsList.prepend(cardElement);
   evt.target.reset();
-  disableButtonElement(submitButtonEl, settings);
+  disableButtonElement(newPostSubmitBtn, settings);
   closeModal(newPostModal);
 }
 
