@@ -80,6 +80,7 @@
 .card__delete-button:hover {
   background-image: url(../images/State=Hover.svg);
   cursor: pointer;
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 635px) and (min-width: 320px) {

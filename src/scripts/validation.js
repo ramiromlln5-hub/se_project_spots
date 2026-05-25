@@ -36,7 +36,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const disableButtonElement = (buttonElement, settings) => {
+export const disableButtonElement = (buttonElement, settings) => {
   buttonElement.disabled = true;
   buttonElement.classList.add(settings.inactiveButtonClass);
 };
@@ -58,7 +58,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
-function resetValidation(formElement) {
+export function resetValidation(formElement) {
   const inputList = Array.from(
     formElement.querySelectorAll(settings.inputSelector),
   );
@@ -73,14 +73,14 @@ function resetValidation(formElement) {
   toggleButtonState(inputList, buttonElement);
 }
 
-function enableValidation() {
+export function enableValidation() {
   const formList = document.querySelectorAll(settings.formSelector);
   formList.forEach((formElement) => {
     setEventListeners(formElement);
   });
 }
 
-const settings = {
+export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
@@ -88,5 +88,3 @@ const settings = {
   inputErrorClass: "modal__input_error",
   errorClass: "modal__error",
 };
-
-enableValidation(settings);
