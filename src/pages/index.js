@@ -50,7 +50,7 @@ const api = new Api({
 //destructure the second item in the callback of the .them()
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, user]) => {
     cards.forEach(function (item) {
       const cardElement = getCardElement(item);
       cardsList.append(cardElement);
@@ -190,9 +190,13 @@ function handleEscapeKey(evt) {
 // TODO finish handler
 function handleAvatarFormSubmit(evt) {
   api
-    .editAvatarInfo(avatarInput.value)
+    .editAvatarInfo({ avatar: avatarInput.value })
     .then((data) => {
       console.log(data);
+      avatarInput.textContent = data.avatar;
+      evt.target.reset();
+      disableButtonElement(avatarSubmitButton, settings);
+      closeModal(avatarModal);
       // TODO - Make this work
     })
     .catch(console.error);
@@ -254,10 +258,16 @@ function handleNewPostSubmit(evt) {
     name: postCaption,
     link: postUrl,
   });
-  cardsList.prepend(cardElement);
-  evt.target.reset();
-  disableButtonElement(newPostSubmitBtn, settings);
-  closeModal(newPostModal);
+
+  api
+    .addCard({ name: postCaption, link: postUrl })
+    .then(() => {
+      cardsList.prepend(cardElement);
+      evt.target.reset();
+      disableButtonElement(newPostSubmitBtn, settings);
+      closeModal(newPostModal);
+    })
+    .catch(console.error);
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);

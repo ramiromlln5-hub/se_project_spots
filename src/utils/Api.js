@@ -5,21 +5,20 @@ class Api {
   }
 
   getAppInfo() {
-    return Promise.all([this.getInitialCards()]);
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
   getInitialCards() {
     //call getUserInfo in this array
-
+    this.getUserInfo();
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then((res) => {
       if (res.ok) {
         return res.json();
       }
-      Promise.reject(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     });
-    this.getUserInfo();
   }
   //TODO-- create another method, getUserInfo(different base URL)
   getUserInfo() {
@@ -30,7 +29,7 @@ class Api {
         return res.json();
       }
 
-      Promise.reject(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     });
   }
 
@@ -55,6 +54,25 @@ class Api {
 
   // TODO implement Post cards
 
+  addCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      // Send the data in the body as a JSON string.
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    }).then((res) => {
+      // handle the response
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Error ${res.status}`);
+    });
+  }
+
   editAvatarInfo(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
@@ -69,7 +87,7 @@ class Api {
         return res.json();
       }
 
-      Promise.reject(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     });
   }
 
@@ -83,7 +101,7 @@ class Api {
         return res.json();
       }
 
-      Promise.reject(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     });
   }
 }
