@@ -25,20 +25,26 @@
   align-items: flex-end;
   justify-content: center;
   visibility: hidden;
+
   /* TODO finish avatar button styles */
 }
 .profile__avatar-container:hover .profile__avatar-button {
   visibility: visible;
+  background-color: #000000;
+  opacity: 0.5;
+  color: #ffffffff;
 }
 
-.profile__avatar-contaner .profile__avatar {
-  height: auto;
-  width: auto;
+.profile__avatar-container .profile__avatar {
+  height: 190px;
+  width: 190px;
   border-radius: 8px;
 }
 
 .profile__avatar-button::after {
   content: "Edit Avatar";
+  color: #ffffffff;
+  opacity: 1;
 }
 
 .profile__column {
@@ -87,6 +93,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 10px;
 }
 
 .profile__edit-button {
@@ -154,14 +161,22 @@
     flex-direction: column;
   }
 
-  .profile__avatar {
-    height: 80px;
-    width: 80px;
+  .profile__avatar-container .profile__avatar {
+    height: 190px;
+    width: 190px;
+    border-radius: 8px;
     margin: auto;
   }
 
   .profile__avatar-button {
     visibility: visible;
+    height: 23.34px;
+    width: 23.32px;
+    bottom: 10px;
+    right: 10px;
+    background: #212121;
+    opacity: 0.6;
+    border-radius: 6px;
   }
 
   .profile__avatar-button::after {
@@ -175,6 +190,8 @@
 
   .profile__name {
     font-size: 20px;
+    display: flex;
+    justify-content: center;
   }
 
   .profile__job-title {

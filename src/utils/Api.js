@@ -10,7 +10,6 @@ class Api {
 
   getInitialCards() {
     //call getUserInfo in this array
-    this.getUserInfo();
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
     }).then((res) => {
@@ -20,7 +19,7 @@ class Api {
       return Promise.reject(`Error ${res.status}`);
     });
   }
-  //TODO-- create another method, getUserInfo(different base URL)
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
@@ -48,7 +47,7 @@ class Api {
         return res.json();
       }
 
-      Promise.reject(`Error ${res.status}`);
+      return Promise.reject(`Error ${res.status}`);
     });
   }
 
@@ -94,6 +93,20 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
+      headers: this._headers,
+    }).then((res) => {
+      // handle the response
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Error ${res.status}`);
+    });
+  }
+
+  changeLikeStatus(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then((res) => {
       // handle the response
