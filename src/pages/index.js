@@ -220,9 +220,9 @@ newPostClosedButton.addEventListener("click", function () {
 
 avatarButton.addEventListener("click", function () {
   openModal(avatarModal);
-
-  avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 });
+
+avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 avatarCloseButton.addEventListener("click", function () {
   closeModal(avatarModal);
