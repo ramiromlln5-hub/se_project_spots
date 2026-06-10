@@ -117,7 +117,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      deleteButtonSubmit.textContent = "delete";
+      deleteButtonSubmit.textContent = "Delete";
     });
 }
 
@@ -186,6 +186,7 @@ function handleEscapeKey(evt) {
 // TODO finish handler
 function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
+  avatarSubmitButton.textContent = "Saving...";
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
@@ -196,7 +197,10 @@ function handleAvatarFormSubmit(evt) {
       closeModal(avatarModal);
       // TODO - Make this work
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      avatarSubmitButton.textContent = "Save";
+    });
 }
 
 editProfileButton.addEventListener("click", function () {
@@ -256,14 +260,11 @@ function handleNewPostSubmit(evt) {
   newPostSubmitBtn.textContent = "Saving...";
   const postUrl = newPostUrl.value;
   const postCaption = newPostCaption.value;
-  const cardElement = getCardElement({
-    name: postCaption,
-    link: postUrl,
-  });
 
   api
     .addCard({ name: postCaption, link: postUrl })
-    .then(() => {
+    .then((newCard) => {
+      const cardElement = getCardElement(newCard);
       cardsList.prepend(cardElement);
       evt.target.reset();
       disableButtonElement(newPostSubmitBtn, settings);
