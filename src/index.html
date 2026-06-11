@@ -10,31 +10,47 @@
     />
     <meta name="author" content="Ramiro Millan" />
     <meta name="keywords" content="media, images, avatar, spots" />
-    <link href="./pages/index.css" rel="stylesheet" />
     <link href="favicon.ico" rel="icon" />
     <title>Spots</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="Spot Logo" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="Spot Logo"
+        />
       </header>
       <main class="content">
         <section class="profile">
           <div class="profile__content">
-            <img
-              src="./images/avatar.jpg"
-              alt="Bessie Coleman"
-              class="profile__avatar"
-            />
+            <div class="profile__avatar-container">
+              <button
+                class="profile__avatar-button"
+                id="profile__avatar-button"
+              >
+                <img
+                  class="profile__pencil-icon"
+                  src="<%=require('./images/pencil-light.svg')%>"
+                  alt="Pencil Icon"
+                />
+              </button>
+              <img
+                src="<%=require('./images/avatar.jpg')%>"
+                alt="Bessie Coleman"
+                class="profile__avatar"
+              />
+            </div>
+
             <div class="profile__column">
               <div class="profile__description">
-                <h1 class="profile__name">Bessie Coleman</h1>
-                <p class="profile__job-title">Cival Aviator</p>
+                <h1 class="profile__name"></h1>
+                <p class="profile__job-title"></p>
               </div>
               <button type="button" class="profile__edit-button">
                 <img
-                  src="./images/edit-icon.svg"
+                  src="<%=require('./images/edit-icon.svg')%>"
                   alt=""
                   class="profile__edit-button-icon"
                 />Edit Button
@@ -44,7 +60,7 @@
           <div class="profile__new-post-column">
             <button class="profile__new-post-button" type="button">
               <img
-                src="./images/plus-icon.svg"
+                src="<%=require('./images/plus-icon.svg')%>"
                 alt=""
                 class="profile__plus-icon"
               />New Post
@@ -157,7 +173,7 @@
       </div>
 
       <div class="modal modal_type_preview" id="preview-modal">
-        <div class="modal__image-container">
+        <div class="modal__container">
           <button
             class="modal__button-close modal__button-close_preview"
             aria-label="Close modal"
@@ -168,7 +184,51 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validation.js"></script>
+
+    <div class="modal" id="avatar-modal">
+      <div class="modal__container">
+        <button class="modal__button-close"></button>
+        <h2 class="modal__title">Edit Avatar</h2>
+        <form class="modal__form" id="edit-avatar-form">
+          <label for="profile-avatar-input" class="modal__label"
+            >Avatar
+            <input
+              id="profile-avatar-input"
+              name="avatar"
+              type="url"
+              class="modal__input"
+              placeholder="avatar goes here"
+              required
+            />
+            <span id="profile-avatar-input-error" class="modal__error"></span>
+          </label>
+
+          <button type="submit" id="avatar-submit" class="modal__submit-button">
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- TODO -- style modal -->
+    <div class="modal" id="delete-modal">
+      <div class="modal__container">
+        <button class="modal__button-close"></button>
+        <h2 class="modal__title">
+          Are you sure you want to delete this image?
+        </h2>
+        <form class="modal__form" id="delete-form">
+          <div class="modal__delete-button-layout">
+            <button
+              type="submit"
+              class="modal__submit-button modal__submit-button_delete"
+            >
+              Delete
+            </button>
+            <button type="button" class="modal__cancel-button">Cancle</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
